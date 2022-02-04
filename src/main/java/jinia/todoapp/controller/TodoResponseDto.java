@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 public class TodoResponseDto {
     private Long id;
     private String name;
-    private boolean completed;
-    private LocalDateTime complete_at;
+    private Boolean completed;
+    private LocalDateTime completed_at;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 

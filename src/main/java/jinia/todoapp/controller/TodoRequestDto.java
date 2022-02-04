@@ -9,7 +9,7 @@ import jinia.todoapp.entity.Todo;
 @AllArgsConstructor
 public class TodoRequestDto {
     private String name;
-    private boolean completed;
+    private Boolean completed;
 
     public Todo toEntity() {
        return Todo.builder()
