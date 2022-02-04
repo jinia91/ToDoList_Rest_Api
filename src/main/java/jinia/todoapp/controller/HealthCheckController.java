@@ -1,4 +1,4 @@
-package test.todo.controller;
+package jinia.todoapp.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
