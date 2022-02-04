@@ -13,7 +13,7 @@ public class Todo extends BasicEntity {
 
     @Id
     @Column(name = "TODO_ID")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Boolean completed;
