@@ -15,6 +15,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.parser.Entity;
+
+import static org.hamcrest.Matchers.iterableWithSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -83,5 +86,24 @@ class TodoIntegrationTest {
                 .andExpect(jsonPath("name").value("통합테스트해야되용"))
                 .andExpect(jsonPath("completed").isEmpty())
                 .andExpect(jsonPath("completed_at").isEmpty());
+    }
+
+    @Test
+    public void TODO리스트_조회_성공_테스트() throws Exception {
+        // given
+        int n = 20;
+        while(n-->0){
+            todoRepository.save(new Todo("더미슉슉슉",null));
+        }
+        // when
+        ResultActions perform = mockMvc.perform(get("/todos"));
+        // then
+            perform.andExpect(status().isOk())
+                    .andExpect(jsonPath("$",iterableWithSize(10)));
+            for(int i =20; i> 10; i--){
+                String url = "http://localhost/todos/" + i;
+                perform.andExpect(jsonPath(String.format("$[%d]['url']", 20-i))
+                        .value(url));
+            }
     }
 }

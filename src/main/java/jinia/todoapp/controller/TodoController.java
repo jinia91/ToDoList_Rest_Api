@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jinia.todoapp.entity.Todo;
 import jinia.todoapp.service.TodoService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,15 +35,22 @@ public class TodoController {
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<List<TodoResponseDto>> readTodoList(@RequestParam(required = false) Integer limit,
+    public ResponseEntity<List<TodoResponseWithUrlDto>> readTodoList(@RequestParam(required = false) Integer limit,
                                                               @RequestParam(required = false) Integer skip){
-        List<TodoResponseDto> todoList =
+        List<TodoResponseWithUrlDto> todoList =
                 todoService
                         .getTodoList(limit, skip)
                         .stream()
-                        .map(TodoResponseDto::of)
+                        .map(TodoResponseWithUrlDto::of)
                         .collect(Collectors.toList());
+        todoList.forEach(dto -> dto.setUrl(buildUrl(dto)));
         return new ResponseEntity<>(todoList, HttpStatus.OK);
     }
 
+    private URI buildUrl(TodoResponseWithUrlDto dto) {
+        return ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(dto.getId())
+                .toUri();
+    }
 }
