@@ -15,8 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.parser.Entity;
-
 import static org.hamcrest.Matchers.iterableWithSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -40,7 +38,7 @@ class TodoIntegrationTest {
     TestDbCleaner testDbCleaner;
 
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         testDbCleaner.execute();
     }
 
@@ -92,18 +90,46 @@ class TodoIntegrationTest {
     public void TODO리스트_조회_성공_테스트() throws Exception {
         // given
         int n = 20;
-        while(n-->0){
-            todoRepository.save(new Todo("더미슉슉슉",null));
+        while (n-- > 0) {
+            todoRepository.save(new Todo("더미슉슉슉", null));
         }
         // when
         ResultActions perform = mockMvc.perform(get("/todos"));
         // then
-            perform.andExpect(status().isOk())
-                    .andExpect(jsonPath("$",iterableWithSize(10)));
-            for(int i =20; i> 10; i--){
-                String url = "http://localhost/todos/" + i;
-                perform.andExpect(jsonPath(String.format("$[%d]['url']", 20-i))
-                        .value(url));
-            }
+        perform.andExpect(status().isOk())
+                .andExpect(jsonPath("$", iterableWithSize(10)));
+        for (int i = 20; i > 10; i--) {
+            String url = "http://localhost/todos/" + i;
+            perform.andExpect(jsonPath(String.format("$[%d]['url']", 20 - i))
+                    .value(url));
+        }
+    }
+
+    @Test
+    public void TODO_업데이트_성공_테스트() throws Exception {
+        // given
+        todoRepository.save(new Todo("before", null));
+        Todo afterTodo = new Todo("after", true);
+        String contents = objectMapper.writeValueAsString(afterTodo);
+        // when
+        ResultActions perform = mockMvc.perform(put("/todos/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(contents));
+        // then
+        perform.andExpect(status().isOk())
+                .andExpect(jsonPath("id").value(1L))
+                .andExpect(jsonPath("name").value(afterTodo.getName()))
+                .andExpect(jsonPath("completed").value(true));
+    }
+
+    @Test
+    public void TODO_삭제_성공_테스트() throws Exception {
+        // given
+        Todo todo = todoRepository.save(new Todo("삭제예정", null));
+        // when
+        ResultActions perform = mockMvc.perform(delete("/todos/" + todo.getId()));
+        // then
+        perform.andExpect(status().isNoContent());
     }
 }

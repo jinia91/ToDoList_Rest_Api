@@ -53,4 +53,19 @@ public class TodoController {
                 .buildAndExpand(dto.getId())
                 .toUri();
     }
+
+    @PutMapping("/todos/{id}")
+    public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long id, @Valid @RequestBody TodoRequestDto todoRequestDto){
+        Todo todo = todoService.readTodoDetail(id);
+        todoService.updateTodo(todo, todoRequestDto.getName(), todoRequestDto.getCompleted());
+        TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
+        return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/todos/{id}")
+    public ResponseEntity<?> deleteTodo(@PathVariable Long id){
+        Todo todo = todoService.readTodoDetail(id);
+        todoService.deleteTodo(todo);
+        return ResponseEntity.noContent().build();
+    }
 }

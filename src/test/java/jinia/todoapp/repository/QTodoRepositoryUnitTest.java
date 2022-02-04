@@ -66,4 +66,18 @@ class QTodoRepositoryUnitTest {
         // then
         assertThat(todoList.size()).isEqualTo(10);
     }
+
+    @Test
+    public void 더티체킹업데이트_확인_테스트() throws Exception {
+        // given
+        Todo todo = todoRepository.save(new Todo("더티체킹", null));
+        // when
+        todo.update("변경됬닝?",true);
+        Todo foundTodo = todoRepository.findById(1L)
+                .orElseThrow(() -> new IllegalArgumentException("저장이 안됬습니다!"));
+        // then
+        assertThat(foundTodo).isEqualTo(todo);
+        assertThat(foundTodo.getName()).isEqualTo("변경됬닝?");
+        assertThat(foundTodo.getCompleted()).isTrue();
+    }
 }

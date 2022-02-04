@@ -30,5 +30,14 @@ public class Todo extends BasicEntity {
         if(this.getCompleted()!=null && this.getCompleted()) {
             this.complete_at = LocalDateTime.now();
         }
+        else{
+            this.complete_at = null;
+        }
+    }
+
+    public void update(String name, Boolean completed) {
+    this.name = name;
+    this.completed =completed;
+    setComplete_at();
     }
 }

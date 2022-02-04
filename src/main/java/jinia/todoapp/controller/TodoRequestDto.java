@@ -8,6 +8,7 @@ import jinia.todoapp.entity.Todo;
 @Getter @Setter
 @AllArgsConstructor
 public class TodoRequestDto {
+
     private String name;
     private Boolean completed;
 
