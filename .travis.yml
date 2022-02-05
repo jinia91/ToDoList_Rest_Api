@@ -17,9 +17,6 @@ before_install:
   - chmod +x gradlew
 
 before_deploy:
-#  - zip -r todo ./*
-#  - mkdir -p deploy
-#  - mv todo.zip deploy/todo.zip
 
   - mkdir -p before-deploy
   - cp scripts/*.sh before-deploy/
@@ -55,11 +52,3 @@ deploy:
     wait-until-deployed: true
     on:
       all_branches: true
-
-
-## CI 실행 완료 시 메일로 알람
-#notifications:
-#  email:
-#    recipients:
-#      - creee77@gmail.com
-#
