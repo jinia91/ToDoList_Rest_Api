@@ -17,9 +17,9 @@ before_install:
   - chmod +x gradlew
 #
 before_deploy:
-  - zip r jinia-todo-app *
+  - zip r ToDoList_Rest_Api *
   - mkdir -p deploy
-  - mv jinia-todo-app.zip deploy/jinia-todo-app.zip
+  - mv ToDoList_Rest_Api.zip deploy/ToDoList_Rest_Api.zip
 
 #  - mkdir -p before-deploy
 #  - cp scripts/*.sh before-deploy/
