@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 import jinia.todoapp.service.TodoService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

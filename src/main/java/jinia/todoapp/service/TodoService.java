@@ -1,9 +1,10 @@
 package jinia.todoapp.service;
 
+import jinia.todoapp.exception.NotFoundException;
 import jinia.todoapp.repository.TodoRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 import jinia.todoapp.repository.TodoRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +26,7 @@ public class TodoService {
 
     public Todo readTodoDetail(Long todoId) {
         return todoRepository.findById(todoId)
-                .orElseThrow(() -> new IllegalArgumentException("request wrong todoId"));
+                .orElseThrow(() -> new NotFoundException("Not Found"));
     }
 
     public List<Todo> getTodoList(Integer limit, Integer skip) {

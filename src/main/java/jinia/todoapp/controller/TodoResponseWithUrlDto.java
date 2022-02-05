@@ -1,13 +1,12 @@
 package jinia.todoapp.controller;
 
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URI;
-import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter @Setter

@@ -1,6 +1,6 @@
 package jinia.todoapp.repository;
 
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 
 import java.util.List;
 

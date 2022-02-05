@@ -1,6 +1,6 @@
 package jinia.todoapp.service;
 
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 import jinia.todoapp.repository.TodoRepositoryImpl;
 import jinia.todoapp.repository.TodoRepository;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class TodoServiceUnitTest {
     }
 
     private Todo mockRepositorySave(Todo todo1) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
-        Class clazz = Class.forName("jinia.todoapp.entity.Todo");
+        Class clazz = Class.forName("jinia.todoapp.domain.Todo");
         Field field = clazz.getDeclaredField("id");
         field.setAccessible(true);
         field.set(todo1, 1L);

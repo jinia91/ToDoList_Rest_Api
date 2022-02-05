@@ -1,6 +1,6 @@
 package jinia.todoapp.repository;
 
-import jinia.todoapp.entity.Todo;
+import jinia.todoapp.domain.Todo;
 import jinia.todoapp.infra.DbConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
