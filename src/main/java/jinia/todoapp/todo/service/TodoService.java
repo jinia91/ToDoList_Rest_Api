@@ -1,7 +1,6 @@
 package jinia.todoapp.todo.service;
 
 import jinia.todoapp.exception.NotFoundException;
-import jinia.todoapp.img.service.ImgService;
 import jinia.todoapp.todo.repository.TodoRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ import java.util.List;
 public class TodoService {
 
         private final TodoRepository todoRepository;
-        private final TodoRepositoryImpl qTodoRepository;
 
    @Transactional
     public Long createNewTodo(Todo todo) {
@@ -31,7 +29,7 @@ public class TodoService {
     }
 
     public List<Todo> getTodoList(Integer limit, Integer skip) {
-        return qTodoRepository.findAllLimitSkip(limit, skip);
+        return todoRepository.findAllLimitSkip(limit, skip);
     }
 
     @Transactional

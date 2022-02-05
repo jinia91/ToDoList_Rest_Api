@@ -1,5 +1,6 @@
 package jinia.todoapp.todo.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jinia.todoapp.img.ImageUrl;
 import lombok.*;
 import jinia.todoapp.todo.Todo;
@@ -17,8 +18,11 @@ public class TodoResponseDto {
     private Long id;
     private String name;
     private Boolean completed;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime completed_at;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime created_at;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime updated_at;
     private List<String> imgUrlList;
 
