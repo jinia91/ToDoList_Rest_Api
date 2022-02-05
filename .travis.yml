@@ -17,9 +17,9 @@ before_install:
   - chmod +x gradlew
 #
 before_deploy:
-  - zip r ToDoList_Rest_Api *
+  - zip r todo *
   - mkdir -p deploy
-  - mv ToDoList_Rest_Api.zip deploy/ToDoList_Rest_Api.zip
+  - mv todo.zip todo.zip
 
 #  - mkdir -p before-deploy
 #  - cp scripts/*.sh before-deploy/
