@@ -17,7 +17,7 @@ before_install:
   - chmod +x gradlew
 #
 before_deploy:
-  - zip r todo *
+  - zip r todo ./*
   - mkdir -p deploy
   - mv todo.zip todo.zip
 
@@ -47,7 +47,7 @@ deploy:
     access_key_id: $AWS_ACESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: jinia-todo-app
-    key: jinia-todo-app.zip
+    key: todo.zip
     bundle_type: zip
     application: todoapp
     deployment_group: todo-app
