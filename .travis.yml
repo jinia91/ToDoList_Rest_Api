@@ -19,7 +19,7 @@ before_install:
 before_deploy:
   - zip -r todo ./*
   - mkdir -p deploy
-  - mv todo.zip todo.zip
+  - mv todo.zip deploy/todo.zip
 
 #  - mkdir -p before-deploy
 #  - cp scripts/*.sh before-deploy/
