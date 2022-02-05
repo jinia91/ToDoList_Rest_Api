@@ -1,5 +1,14 @@
-
 spring:
+
+  jpa:
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        batch_fetch_style: dynamic
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 100
+
   profiles:
     active: dev
-

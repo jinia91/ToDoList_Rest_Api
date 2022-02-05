@@ -1,5 +1,7 @@
 package jinia.todoapp.todo.controller;
 
+import jinia.todoapp.img.ImageUrl;
+import jinia.todoapp.img.service.ImgService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +20,15 @@ import java.util.stream.Collectors;
 public class TodoController {
 
     private final TodoService todoService;
+    private final ImgService imgService;
 
     @PostMapping("/todos")
     public ResponseEntity<TodoResponseDto> createNewTodo(@Valid @RequestBody TodoRequestDto todoRequestDto){
         Todo todo = todoRequestDto.toEntity();
         todoService.createNewTodo(todo);
+        if(todoRequestDto.getImgUrlList() != null){
+            imgService.saveUrlList(todoRequestDto.getImgUrlList(), todo);
+        }
         TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
         return new ResponseEntity<>(todoResponseDto, HttpStatus.CREATED);
     }
@@ -58,6 +64,7 @@ public class TodoController {
     public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long id, @Valid @RequestBody TodoRequestDto todoRequestDto){
         Todo todo = todoService.readTodoDetail(id);
         todoService.updateTodo(todo, todoRequestDto.getName(), todoRequestDto.getCompleted());
+        imgService.updateUrlList(todo,todoRequestDto.getImgUrlList());
         TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
     }

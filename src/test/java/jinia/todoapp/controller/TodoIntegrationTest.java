@@ -172,7 +172,6 @@ class TodoIntegrationTest {
         perform.andExpect(status().isUnauthorized());
     }
 
-
     @Test
     public void TODO_삭제_성공_테스트() throws Exception {
         // given

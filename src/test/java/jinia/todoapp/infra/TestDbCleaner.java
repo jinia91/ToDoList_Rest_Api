@@ -53,7 +53,7 @@ public class TestDbCleaner implements InitializingBean {
 
         for (String tableName : tableNames) {
             statement.executeUpdate("TRUNCATE TABLE " + tableName);
-            statement.executeUpdate("ALTER TABLE " + tableName + " ALTER COLUMN TODO_ID RESTART WITH 1");
+            statement.executeUpdate(String.format("ALTER TABLE %s ALTER COLUMN %s_ID RESTART WITH 1",tableName,tableName));
         }
 
         statement.executeUpdate("SET REFERENTIAL_INTEGRITY TRUE");

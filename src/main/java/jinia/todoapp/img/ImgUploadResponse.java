@@ -7,10 +7,10 @@ import java.util.List;
 
 @Getter @Setter
 public class ImgUploadResponse {
-    private List<String> urlList;
+    private List<String> imgUrlList;
 
     public ImgUploadResponse(List<String> imgUrlList) {
-        urlList = imgUrlList;
+        this.imgUrlList = imgUrlList;
     }
 }
 

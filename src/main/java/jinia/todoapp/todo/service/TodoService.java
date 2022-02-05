@@ -1,6 +1,7 @@
 package jinia.todoapp.todo.service;
 
 import jinia.todoapp.exception.NotFoundException;
+import jinia.todoapp.img.service.ImgService;
 import jinia.todoapp.todo.repository.TodoRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
