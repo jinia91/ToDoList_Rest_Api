@@ -1,7 +1,7 @@
-package jinia.todoapp.repository;
+package jinia.todoapp.todo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 import org.springframework.stereotype.Repository;
 
 @Repository

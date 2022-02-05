@@ -1,9 +1,10 @@
 package jinia.todoapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 import jinia.todoapp.infra.TestDbCleaner;
-import jinia.todoapp.repository.TodoRepository;
+import jinia.todoapp.todo.controller.TodoRequestDto;
+import jinia.todoapp.todo.repository.TodoRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

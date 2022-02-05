@@ -1,7 +1,9 @@
 package jinia.todoapp.repository;
 
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 import jinia.todoapp.infra.DbConfig;
+import jinia.todoapp.todo.repository.TodoRepository;
+import jinia.todoapp.todo.repository.TodoRepositoryCustom;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

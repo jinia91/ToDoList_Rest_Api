@@ -1,9 +1,9 @@
-package jinia.todoapp.controller;
+package jinia.todoapp.todo.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 
 import javax.validation.constraints.NotEmpty;
 

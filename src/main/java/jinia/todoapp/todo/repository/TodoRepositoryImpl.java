@@ -1,13 +1,13 @@
-package jinia.todoapp.repository;
+package jinia.todoapp.todo.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
-import static jinia.todoapp.domain.QTodo.*;
+import static jinia.todoapp.todo.QTodo.*;
 
 @RequiredArgsConstructor
 @Qualifier("qTodoRepository")

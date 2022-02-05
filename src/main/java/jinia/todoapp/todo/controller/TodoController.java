@@ -1,11 +1,11 @@
-package jinia.todoapp.controller;
+package jinia.todoapp.todo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import jinia.todoapp.domain.Todo;
-import jinia.todoapp.service.TodoService;
+import jinia.todoapp.todo.Todo;
+import jinia.todoapp.todo.service.TodoService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;

@@ -1,7 +1,7 @@
-package jinia.todoapp.controller;
+package jinia.todoapp.todo.controller;
 
 import lombok.*;
-import jinia.todoapp.domain.Todo;
+import jinia.todoapp.todo.Todo;
 
 import java.time.LocalDateTime;
 

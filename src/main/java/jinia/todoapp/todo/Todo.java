@@ -1,4 +1,4 @@
-package jinia.todoapp.domain;
+package jinia.todoapp.todo;
 
 import lombok.*;
 import jinia.todoapp.infra.BasicEntity;

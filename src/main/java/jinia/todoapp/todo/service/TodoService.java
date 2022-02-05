@@ -1,11 +1,11 @@
-package jinia.todoapp.service;
+package jinia.todoapp.todo.service;
 
 import jinia.todoapp.exception.NotFoundException;
-import jinia.todoapp.repository.TodoRepositoryImpl;
+import jinia.todoapp.todo.repository.TodoRepositoryImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import jinia.todoapp.domain.Todo;
-import jinia.todoapp.repository.TodoRepository;
+import jinia.todoapp.todo.Todo;
+import jinia.todoapp.todo.repository.TodoRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
