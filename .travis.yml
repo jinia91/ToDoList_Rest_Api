@@ -16,7 +16,11 @@ script: "./gradlew clean build"
 before_install:
   - chmod +x gradlew
 #
-#before_deploy:
+before_deploy:
+  - zip r jinia-todo-app *
+  - mkdir -p deploy
+  - mv jinia-todo-app.zip deploy/jinia-todo-app.zip
+
 #  - mkdir -p before-deploy
 #  - cp scripts/*.sh before-deploy/
 #  - cp appspec.yml before-deploy/
@@ -26,33 +30,33 @@ before_install:
 #  - cd ../ && mkdir -p deploy
 #  - mv before-deploy/before-deploy.zip deploy/springboot-blog.zip
 #
-#deploy:
-#  - provider: s3
-#    access_key_id: $AWS_ACESS_KEY
-#    secret_access_key: $AWS_SECRET_KEY
-#    bucket: blog-build-bucket
-#    region: ap-northeast-2
-#    skip_cleanup: true
-#    acl: private
-#    local_dir: deploy
-#    wait-until-deployed: true
-#    on:
-#      all_branches: true
-#
-#  - provider: codedeploy
-#    access_key_id: $AWS_ACESS_KEY
-#    secret_access_key: $AWS_SECRET_KEY
-#    bucket: blog-build-bucket
-#    key: springboot-blog.zip
-#    bundle_type: zip
-#    application: springboot-blog
-#    deployment_group: springboot-blog-group
-#    region: ap-northeast-2
-#    wait-until-deployed: true
-#    on:
-#      all_branches: true
-#
-#
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: jinia-todo-app
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      all_branches: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: jinia-todo-app
+    key: jinia-todo-app.zip
+    bundle_type: zip
+    application: todoapp
+    deployment_group: todo-app
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      all_branches: true
+
+
 ## CI 실행 완료 시 메일로 알람
 #notifications:
 #  email:
