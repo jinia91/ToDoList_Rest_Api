@@ -32,7 +32,7 @@ before_deploy:
 #
 deploy:
   - provider: s3
-    access_key_id: $AWS-ACESS-KEY
+    access_key_id: $AWS-ACCESS-KEY
     secret_access_key: $AWS-SECRET-KEY
     bucket: jinia-todo-app
     region: ap-northeast-2
@@ -44,7 +44,7 @@ deploy:
       all_branches: true
 
   - provider: codedeploy
-    access_key_id: $AWS-ACESS-KEY
+    access_key_id: $AWS-ACCESS-KEY
     secret_access_key: $AWS-SECRET-KEY
     bucket: jinia-todo-app
     key: todo.zip
