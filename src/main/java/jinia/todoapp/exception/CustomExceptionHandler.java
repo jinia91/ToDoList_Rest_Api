@@ -23,6 +23,14 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<Object> handleUserNotValidArgumentExceptions(Exception ex){
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse("400", ex.getMessage());
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<Object> handleUserNotFoundExceptions(Exception ex){
         ExceptionResponse exceptionResponse =

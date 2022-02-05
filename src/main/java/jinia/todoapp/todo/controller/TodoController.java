@@ -1,5 +1,7 @@
 package jinia.todoapp.todo.controller;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import jinia.todoapp.img.ImageUrl;
 import jinia.todoapp.img.service.ImgService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,11 @@ public class TodoController {
     private final TodoService todoService;
     private final ImgService imgService;
 
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "Todo 생성 성공"),
+            @ApiResponse(code = 401, message = "인가 실패"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @PostMapping("/todos")
     public ResponseEntity<TodoResponseDto> createNewTodo(@Valid @RequestBody TodoRequestDto todoRequestDto){
         Todo todo = todoRequestDto.toEntity();
@@ -33,6 +40,11 @@ public class TodoController {
         return new ResponseEntity<>(todoResponseDto, HttpStatus.CREATED);
     }
 
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "정상 조회"),
+            @ApiResponse(code = 404, message = "없는 리소스 조회"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @GetMapping("/todos/{todoId}")
     public ResponseEntity<TodoResponseDto> readTodoDetail(@PathVariable Long todoId){
         Todo todo = todoService.readTodoDetail(todoId);
@@ -40,6 +52,10 @@ public class TodoController {
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
     }
 
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Todo List 조회"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @GetMapping("/todos")
     public ResponseEntity<List<TodoResponseWithUrlDto>> readTodoList(@RequestParam(required = false) Integer limit,
                                                               @RequestParam(required = false) Integer skip){
@@ -60,6 +76,12 @@ public class TodoController {
                 .toUri();
     }
 
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Todo 수정 성공"),
+            @ApiResponse(code = 401, message = "인가 실패"),
+            @ApiResponse(code = 404, message = "없는 리소스 수정 시도"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @PutMapping("/todos/{id}")
     public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long id, @Valid @RequestBody TodoRequestDto todoRequestDto){
         Todo todo = todoService.readTodoDetail(id);
@@ -69,6 +91,12 @@ public class TodoController {
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
     }
 
+    @ApiResponses({
+            @ApiResponse(code = 204, message = "Todo 삭제 성공"),
+            @ApiResponse(code = 401, message = "인가 실패"),
+            @ApiResponse(code = 401, message = "없는 리소스 삭제 시도"),
+            @ApiResponse(code = 500, message = "서버 에러")
+    })
     @DeleteMapping("/todos/{id}")
     public ResponseEntity<?> deleteTodo(@PathVariable Long id){
         Todo todo = todoService.readTodoDetail(id);
