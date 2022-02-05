@@ -26,7 +26,6 @@ before_deploy:
   - cd ../ && mkdir -p deploy
   - mv before-deploy/before-deploy.zip deploy/todo.zip
 
-
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
