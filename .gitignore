@@ -38,3 +38,5 @@ out/
 
 #개발, 운영환경 분리
 application-dev.yml
+application-test.yml
+application.yml
