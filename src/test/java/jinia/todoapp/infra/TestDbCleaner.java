@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-//@Profile("test")
+@Profile("test")
 public class TestDbCleaner implements InitializingBean {
 
     @PersistenceContext

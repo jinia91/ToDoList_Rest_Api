@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class ImageUrl extends BasicEntity {
 
     @Id
-    @Column(name = "ImageUrl_ID")
+    @Column(name = "IMAGE_URL_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
