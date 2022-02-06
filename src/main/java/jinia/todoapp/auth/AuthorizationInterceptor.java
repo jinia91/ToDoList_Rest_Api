@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
-    @Value("auth.key")
+    @Value("${auth.key}")
     private String API_KEY;
 
     @Override
