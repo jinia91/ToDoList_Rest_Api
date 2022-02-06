@@ -32,8 +32,8 @@ dependencies {
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 	implementation group: 'org.apache.tika', name: 'tika-core', version: '2.2.1'
-
 	implementation "com.querydsl:querydsl-jpa:5.0.0"
+
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0"
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
