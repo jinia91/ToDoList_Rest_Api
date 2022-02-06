@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 REPOSITORY=/home/ec2-user/app/deploy
 PROJECT_NAME=todo-app
 
@@ -10,16 +9,15 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep java)
+CURRENT_PID=$(pgrep -fl java)
 
 echo "현재 구동중인 애플리케이션 pid: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
         echo ">현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다"
 else
-       kill -15 $CURRENT_PID
-        fuser -k 8080/tcp
-        sleep 5
+        kill -15 $CURRENT_PID
+        sleep 15
 fi
 
 echo "> 새 애플리케이션 배포"
