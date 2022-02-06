@@ -22,9 +22,14 @@ public class WebConfig implements WebMvcConfigurer {
         @Value("${cloud.aws.credentials.secretKey}")
         private String AWS_SECRET_ACCESS_KEY;
 
+    @Bean
+    public AuthorizationInterceptor authorizationInterceptor() {
+        return new AuthorizationInterceptor ();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthorizationInterceptor())
+        registry.addInterceptor(authorizationInterceptor())
                 .addPathPatterns("/todos","/todos/*","/images");
     }
 

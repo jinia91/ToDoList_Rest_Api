@@ -1,6 +1,7 @@
 package jinia.todoapp.auth;
 
 import jinia.todoapp.exception.NotAuthorizedException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
-    private String API_KEY = "123";
+    @Value("auth.key")
+    private String API_KEY;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
