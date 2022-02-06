@@ -1,7 +1,5 @@
-package jinia.todoapp.img.service;
+package jinia.todoapp.imgurl;
 
-import jinia.todoapp.img.ImageUrl;
-import jinia.todoapp.img.ImgRepository;
 import jinia.todoapp.todo.Todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,12 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * todo에 포함될 img url 저장과 갱신, 삭제를 위한 비지니스 로직
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ImgService {
+public class ImgUrlService {
 
-    private final ImgRepository imgRepository;
+    private final ImgUrlRepository imgUrlRepository;
 
     public void saveUrlList(List<String> imgList, Todo todo){
         for(var img : imgList){
@@ -48,7 +49,7 @@ public class ImgService {
     }
 
     public void deleteList(Todo todo, List<ImageUrl> deleteList) {
-        imgRepository.deleteAll(deleteList);
+        imgUrlRepository.deleteAll(deleteList);
         deleteList.forEach(todo::deleteImgUrl);
     }
 }

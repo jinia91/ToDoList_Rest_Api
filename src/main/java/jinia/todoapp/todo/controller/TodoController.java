@@ -2,8 +2,7 @@ package jinia.todoapp.todo.controller;
 
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import jinia.todoapp.img.ImageUrl;
-import jinia.todoapp.img.service.ImgService;
+import jinia.todoapp.imgurl.ImgUrlService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ import java.util.stream.Collectors;
 public class TodoController {
 
     private final TodoService todoService;
-    private final ImgService imgService;
+    private final ImgUrlService imgUrlService;
 
     @ApiResponses({
             @ApiResponse(code = 201, message = "Todo 생성 성공"),
@@ -34,7 +33,7 @@ public class TodoController {
         Todo todo = todoRequestDto.toEntity();
         todoService.createNewTodo(todo);
         if(todoRequestDto.getImgUrlList() != null){
-            imgService.saveUrlList(todoRequestDto.getImgUrlList(), todo);
+            imgUrlService.saveUrlList(todoRequestDto.getImgUrlList(), todo);
         }
         TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
         return new ResponseEntity<>(todoResponseDto, HttpStatus.CREATED);
@@ -45,9 +44,9 @@ public class TodoController {
             @ApiResponse(code = 404, message = "없는 리소스 조회"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
-    @GetMapping("/todos/{todoId}")
-    public ResponseEntity<TodoResponseDto> readTodoDetail(@PathVariable Long todoId){
-        Todo todo = todoService.readTodoDetail(todoId);
+    @GetMapping("/todos/{id}")
+    public ResponseEntity<TodoResponseDto> readTodoDetail(@PathVariable Long id){
+        Todo todo = todoService.readTodoDetail(id);
         TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
     }
@@ -86,7 +85,7 @@ public class TodoController {
     public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long id, @Valid @RequestBody TodoRequestDto todoRequestDto){
         Todo todo = todoService.readTodoDetail(id);
         todoService.updateTodo(todo, todoRequestDto.getName(), todoRequestDto.getCompleted());
-        imgService.updateUrlList(todo,todoRequestDto.getImgUrlList());
+        imgUrlService.updateUrlList(todo,todoRequestDto.getImgUrlList());
         TodoResponseDto todoResponseDto = TodoResponseDto.of(todo);
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
     }

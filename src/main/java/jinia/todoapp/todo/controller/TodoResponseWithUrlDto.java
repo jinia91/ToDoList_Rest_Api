@@ -11,6 +11,9 @@ import java.net.URI;
 
 import java.time.LocalDateTime;
 
+/**
+ * 헤이티오스를 포함한 GET LIST 요청시 반환용 Spec
+ */
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor

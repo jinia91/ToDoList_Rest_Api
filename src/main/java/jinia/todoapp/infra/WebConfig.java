@@ -27,12 +27,18 @@ public class WebConfig implements WebMvcConfigurer {
         return new AuthorizationInterceptor ();
     }
 
+    /**
+     * 인가 인터셉터 설정
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authorizationInterceptor())
                 .addPathPatterns("/todos","/todos/*","/images");
     }
 
+    /**
+     * AWS S3 설정
+     */
     @Bean
     public AmazonS3 S3() {
         AWSCredentials awsCredentials =

@@ -29,6 +29,9 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false);
     }
 
+    /**
+     * 스웨거 기본 설정
+     */
     private ApiInfo swaggerInfo() {
         return new ApiInfoBuilder().title("ToDo App API")
                 .description("ToDo App API Docs").build();

@@ -1,6 +1,6 @@
 package jinia.todoapp.todo;
 
-import jinia.todoapp.img.ImageUrl;
+import jinia.todoapp.imgurl.ImageUrl;
 import lombok.*;
 import jinia.todoapp.infra.BasicEntity;
 

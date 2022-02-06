@@ -1,8 +1,8 @@
-package jinia.todoapp.img;
+package jinia.todoapp.imgurl;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImgRepository extends JpaRepository<ImageUrl, Long> {
+public interface ImgUrlRepository extends JpaRepository<ImageUrl, Long> {
 }

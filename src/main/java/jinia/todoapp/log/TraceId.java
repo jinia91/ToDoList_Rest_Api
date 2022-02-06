@@ -4,6 +4,9 @@ import lombok.Getter;
 
 import java.util.UUID;
 
+/**
+ * 요청별(쓰레드별) 로그 고유 ID 기록 객체
+ */
 @Getter
 public class TraceId {
     private final String id;

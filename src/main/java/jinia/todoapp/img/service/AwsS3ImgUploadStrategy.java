@@ -9,9 +9,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 
+/**
+ * S3 이미지 업로드 전략 구현체
+ */
 @RequiredArgsConstructor
 @Service
-public class AwsS3ImgUploadStrategy implements FileUploadStrategy{
+public class AwsS3ImgUploadStrategy implements ImgUploadStrategy {
 
     private final AmazonS3 amazonS3;
     @Value("${cloud.aws.s3.bucket}")
@@ -29,6 +32,11 @@ public class AwsS3ImgUploadStrategy implements FileUploadStrategy{
         return amazonS3.getUrl(bucket, storeFileName).toString();
     }
 
+    /**
+     * s3 api를 위한 dto 생성 메서드
+     * @param file 업로드 요청된 이미지 파일
+     * @return s3 api 요구 스펙 dto
+     */
     private ObjectMetadata createObjectMetadata(MultipartFile file) {
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(file.getSize());

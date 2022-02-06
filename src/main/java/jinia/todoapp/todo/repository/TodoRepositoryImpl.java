@@ -9,6 +9,9 @@ import java.util.List;
 
 import static jinia.todoapp.todo.QTodo.*;
 
+/**
+ * 동적 쿼리를 위한 쿼리dsl 구현체
+ */
 @RequiredArgsConstructor
 @Qualifier("qTodoRepository")
 public class TodoRepositoryImpl implements TodoRepositoryCustom {

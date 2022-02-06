@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * 쿼리dsl 설정
+ */
 @Configuration
 @EnableJpaAuditing
 public class DbConfig {

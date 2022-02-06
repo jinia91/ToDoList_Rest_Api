@@ -3,6 +3,10 @@ package jinia.todoapp.log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+/**
+ * @ThreadSafe
+ * 로그를 실제로 찍는 객체
+ */
 @Slf4j
 @Component
 public class LogTracer {

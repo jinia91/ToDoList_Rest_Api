@@ -7,6 +7,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 인가 처리 인터셉터
+ */
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Value("${auth.key}")

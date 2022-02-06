@@ -1,7 +1,7 @@
 package jinia.todoapp.todo.controller;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jinia.todoapp.img.ImageUrl;
+import jinia.todoapp.imgurl.ImageUrl;
 import lombok.*;
 import jinia.todoapp.todo.Todo;
 
