@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Profile("test")
+//@Profile("test")
 public class TestDbCleaner implements InitializingBean {
 
     @PersistenceContext
